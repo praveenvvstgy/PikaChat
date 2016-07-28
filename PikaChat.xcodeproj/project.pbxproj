@@ -27,7 +27,6 @@
 		AC82A8DE1D49BCFE00C82896 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82A8CC1D49BCFE00C82896 /* Utils.swift */; };
 		AC82A8DF1D49BCFE00C82896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82A8CE1D49BCFE00C82896 /* AppDelegate.swift */; };
 		AC82A8E01D49BCFE00C82896 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC82A8CF1D49BCFE00C82896 /* GoogleService-Info.plist */; };
-		AC82A8E11D49BCFE00C82896 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC82A8D01D49BCFE00C82896 /* Info.plist */; };
 		AC82A8E61D49BD1E00C82896 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82A8E31D49BD1E00C82896 /* CommentsTableViewCell.swift */; };
 		AC82A8E71D49BD1E00C82896 /* NewPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC82A8E41D49BD1E00C82896 /* NewPostView.xib */; };
 		AC82A8E81D49BD1E00C82896 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82A8E51D49BD1E00C82896 /* PostsTableViewCell.swift */; };
@@ -248,7 +247,6 @@
 				AC82A8B01D49BC9000C82896 /* Main.storyboard in Resources */,
 				AC82A8DA1D49BCFE00C82896 /* OpenSans-Semibold.ttf in Resources */,
 				AC82A8E01D49BCFE00C82896 /* GoogleService-Info.plist in Resources */,
-				AC82A8E11D49BCFE00C82896 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

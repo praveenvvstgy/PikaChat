@@ -11,6 +11,7 @@ import FirebaseAuth
 import MBProgressHUD
 import DZNEmptyDataSet
 import FirebaseDatabase
+import IQKeyboardManagerSwift
 
 class PostDetailViewController: UIViewController {
 
@@ -98,6 +99,7 @@ class PostDetailViewController: UIViewController {
             self.commentTextViewHeight.constant = 61
             }, completion: { (finish) in
                 self.commentTextView.becomeFirstResponder()
+                IQKeyboardManager.sharedManager().reloadLayoutIfNeeded()
         })
     }
     
