@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
-        print("Current location is \(LocationHelper.sharedHelper.currentLocation)")
+        LocationHelper.sharedHelper.collectLocationOnce()
 //        Fabric.with([Crashlytics.self])
         return true
     }

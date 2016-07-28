@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
         }
     }
     
+    var keys = [String]()
+    
     override func viewDidLoad() {
         setupNewPostView()
         
@@ -55,6 +57,12 @@ class HomeViewController: UIViewController {
                                     if let city = addressDictionary["City"] as? NSString, let state = addressDictionary["State"] as? NSString {
                                         // Convert meters to miles and format it
                                         post["location"] = "\(String(format: "%.2f", LocationHelper.sharedHelper.currentLocation.distanceFromLocation(location)/1609.344))m - \(city), \(state)"
+                                        if self.keys.contains(key) == false {
+                                            self.keys.append(key)
+                                            self.keys.sortInPlace {
+                                                $0 > $1
+                                            }
+                                        }
                                         self.posts[key] = post
                                     }
                                 }
@@ -72,12 +80,14 @@ class HomeViewController: UIViewController {
                 self.posts[key] = nil
             }
         }
+        LocationHelper.sharedHelper.startLocationCollection()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        print("Current location is \(LocationHelper.sharedHelper.currentLocation)")
+    deinit {
+        LocationHelper.sharedHelper.stopLocationCollection()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -116,12 +126,6 @@ class HomeViewController: UIViewController {
         ]
         submitButton.setTitleTextAttributes(attributes, forState: .Normal)
         toolbar.setItems([flexibleSpace, submitButton], animated: true)
-//        submitButton.setTitle("SUBMIT", forState: .Normal)
-//        submitButton.contentHorizontalAlignment  = .Right
-//        submitButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 14)
-//        submitButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-//        submitButton.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-//        submitButton.addTarget(self, action: #selector(submitPost), forControlEvents: .TouchUpInside)
         postTextView.inputAccessoryView = toolbar
     }
     
@@ -224,13 +228,13 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return keys.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("postsCell", forIndexPath: indexPath) as! PostsTableViewCell
         
-        let postKey = Array(posts.keys)[indexPath.row]
+        let postKey = keys[indexPath.row]
         if let post = posts[postKey] {
             cell.usernameLabel.text = post["username"]
             cell.postTitleLabel.text = post["text"]

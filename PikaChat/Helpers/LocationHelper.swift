@@ -20,14 +20,20 @@ class LocationHelper: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+    }
+    
+    func startLocationCollection() {
         locationManager.startUpdatingLocation()
     }
     
-    func startCollectingLocation() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.startUpdatingLocation()
+    func stopLocationCollection() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func collectLocationOnce() {
+        locationManager.requestLocation()
     }
     
     func showLocationPrompt() {
@@ -36,7 +42,7 @@ class LocationHelper: NSObject {
         pscope.addPermission(LocationWhileInUsePermission(), message: "We use this to find messages near you \nand attach your location to your posts")
         pscope.show({ finished, results in
             print("got results \(results)")
-            LocationHelper.sharedHelper.startCollectingLocation()
+            self.collectLocationOnce()
             }, cancelled: { (results) -> Void in
                 print("thing was cancelled")
         })
@@ -48,11 +54,15 @@ class LocationHelper: NSObject {
 extension LocationHelper: CLLocationManagerDelegate {
     
     @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if manager.location != nil && currentLocation != nil  && currentLocation.distanceFromLocation(manager.location!) > 100 {
+        if (currentLocation == nil && manager.location != nil) || (manager.location != nil  && currentLocation.distanceFromLocation(manager.location!) > 100) {
             print("Location changed to: \(manager.location)")
             NSNotificationCenter.defaultCenter().postNotificationName("locationChanged", object: manager.location)
         }
         currentLocation = manager.location
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error.localizedDescription)
     }
     
 }
