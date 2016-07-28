@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view alpha="0.90000000000000002" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xP-LT-Kew">
+                    <rect key="frame" x="30" y="45" width="540" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="KFC-9w-cWG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="10"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAK-fd-r4K">
+                    <rect key="frame" x="8" y="46" width="12" height="12"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="RPU-P3-Rav"/>
+                        <constraint firstAttribute="height" constant="12" id="tZd-OG-KUX"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-23-tew">
+                    <rect key="frame" x="578" y="45" width="14" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="GyL-tK-0g1"/>
+                        <constraint firstAttribute="height" constant="14" id="u1x-6Z-3Mg"/>
+                    </constraints>
+                    <state key="normal" image="closeicon"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LCm-Eq-nLO">
+                    <rect key="frame" x="8" y="76" width="584" height="125"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="Wlg-Xq-KBU"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                </textView>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVj-Pe-a3w">
+                    <rect key="frame" x="492" y="209" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="2S8-Hp-le0"/>
+                        <constraint firstAttribute="height" constant="30" id="FCD-Yx-bhy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
+                    <state key="normal" title="SUBMIT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PVj-Pe-a3w" secondAttribute="trailing" constant="8" id="5tE-t6-Z5Y"/>
+                <constraint firstItem="EqX-23-tew" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="JC0-ho-dwd"/>
+                <constraint firstItem="DAK-fd-r4K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="46" id="LyL-v6-Qu7"/>
+                <constraint firstItem="DAK-fd-r4K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="N8B-BE-FTp"/>
+                <constraint firstItem="LCm-Eq-nLO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="R7W-Nc-HJK"/>
+                <constraint firstItem="LCm-Eq-nLO" firstAttribute="top" secondItem="EqX-23-tew" secondAttribute="bottom" constant="17" id="Uy7-2g-2Dp"/>
+                <constraint firstItem="7xP-LT-Kew" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="Ye7-9z-jjy"/>
+                <constraint firstAttribute="trailing" secondItem="EqX-23-tew" secondAttribute="trailing" constant="8" id="YtV-GM-frp"/>
+                <constraint firstItem="EqX-23-tew" firstAttribute="leading" secondItem="7xP-LT-Kew" secondAttribute="trailing" constant="8" id="fDl-62-Bqd"/>
+                <constraint firstItem="PVj-Pe-a3w" firstAttribute="top" secondItem="LCm-Eq-nLO" secondAttribute="bottom" constant="8" id="hEa-nk-0Jt"/>
+                <constraint firstAttribute="trailing" secondItem="LCm-Eq-nLO" secondAttribute="trailing" constant="8" id="mX7-yU-ixb"/>
+                <constraint firstItem="7xP-LT-Kew" firstAttribute="leading" secondItem="DAK-fd-r4K" secondAttribute="trailing" constant="10" id="osc-Zl-DnU"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="closeicon" width="9" height="9"/>
+    </resources>
+</document>
