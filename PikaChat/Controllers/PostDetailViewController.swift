@@ -44,7 +44,7 @@ class PostDetailViewController: UIViewController {
         locationLabel.text = post["location"]
         
         if let commentFieldUsername = view.viewWithTag(10) as? UILabel {
-            commentFieldUsername.attributedText = Utils.getUsernameString((FIRAuth.auth()?.currentUser?.displayName)!)
+            commentFieldUsername.text = FIRAuth.auth()?.currentUser?.displayName
         }
         
         collapseCommentBox()
@@ -176,7 +176,7 @@ extension PostDetailViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("commentsCell", forIndexPath: indexPath) as! CommentsTableViewCell
         let comment = comments[indexPath.row]
-        cell.usernameLabel.attributedText = Utils.getUsernameString(comment["username"]!)
+        cell.usernameLabel.text = comment["username"]
         cell.commentTextLabel.text = comment["commentText"]!
         return cell
     }

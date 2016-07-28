@@ -99,14 +99,30 @@ class HomeViewController: UIViewController {
             self.postTextView = postTextView
         }
         
-        if let submitButton = newPostView.viewWithTag(4) as? UIButton {
-            submitButton.addTarget(self, action: #selector(submitPost), forControlEvents: .TouchUpInside)
-        }
         newPostView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeNewPostView)))
         
         newPostView.frame = UIScreen.mainScreen().bounds
         
         newPostView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: newPostView.bounds.width, height: 44))
+        toolbar.backgroundColor = UIColor.clearColor()
+        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .Any, barMetrics: .Default)
+        let flexibleSpace  = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let submitButton = UIBarButtonItem(title: "SUBMIT", style: .Plain, target: self, action: #selector(submitPost))
+        let attributes = [
+            NSFontAttributeName: UIFont(name: "OpenSans-Semibold", size: 14)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        submitButton.setTitleTextAttributes(attributes, forState: .Normal)
+        toolbar.setItems([flexibleSpace, submitButton], animated: true)
+//        submitButton.setTitle("SUBMIT", forState: .Normal)
+//        submitButton.contentHorizontalAlignment  = .Right
+//        submitButton.titleLabel?.font = UIFont(name: "OpenSans-Semibold", size: 14)
+//        submitButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+//        submitButton.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
+//        submitButton.addTarget(self, action: #selector(submitPost), forControlEvents: .TouchUpInside)
+        postTextView.inputAccessoryView = toolbar
     }
     
     func closeNewPostView() {
@@ -140,7 +156,7 @@ class HomeViewController: UIViewController {
             }, completion: nil)
     }
     
-    @IBAction func submitPost() {
+    func submitPost() {
         if postTextView.text.isEmpty || postTextView.text == "Click to enter text" {
             return
         }
@@ -234,6 +250,7 @@ extension HomeViewController: UITableViewDelegate {
 
 }
 
+// MARK: DZNEmptyDataSetSource
 extension HomeViewController: DZNEmptyDataSetSource {
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
@@ -258,6 +275,7 @@ extension HomeViewController: DZNEmptyDataSetSource {
     
 }
 
+// MARK: DZNEmptyDataSetDelegate
 extension HomeViewController: DZNEmptyDataSetDelegate {
     
     func emptyDataSetDidTapButton(scrollView: UIScrollView!) {

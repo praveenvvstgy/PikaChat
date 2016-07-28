@@ -12,6 +12,7 @@ import FirebaseAuth
 import MBProgressHUD
 import FirebaseDatabase
 import MMDrawerController
+import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
 
@@ -49,6 +50,17 @@ class LoginViewController: UIViewController {
         passwordField.validationRules = passwordRules
         passwordField.validateOnEditingEnd(true)
         passwordField.validationHandler = validationHandler
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 43))
+        button.backgroundColor = UIColor(red:0.83, green:0.07, blue:0.07, alpha:1.00)
+        button.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
+        button.setTitle("GO", forState: .Normal)
+        button.titleLabel?.textAlignment = .Center
+        button.titleLabel?.textColor = UIColor.whiteColor()
+        button.addTarget(self, action: #selector(initiateLogin), forControlEvents: .TouchUpInside)
+        
+        usernameField.inputAccessoryView = button
+        passwordField.inputAccessoryView = button
     }
     
     // MARK: Form Handling
@@ -77,6 +89,7 @@ class LoginViewController: UIViewController {
     
     // MARK: Login Handling
     @IBAction func initiateLogin() {
+        IQKeyboardManager.sharedManager().resignFirstResponder()
         if validateForm() == true {
             let loadingIndicator = MBProgressHUD.showHUDAddedTo(view, animated: true)
             loadingIndicator.label.text = "Logging In"

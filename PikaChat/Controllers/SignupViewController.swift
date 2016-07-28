@@ -13,6 +13,7 @@ import Firebase
 import MBProgressHUD
 import FirebaseDatabase
 import MMDrawerController
+import IQKeyboardManagerSwift
 
 class SignupViewController: UIViewController {
 
@@ -20,9 +21,10 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
     
     @IBOutlet weak var errorLabelHeight: NSLayoutConstraint!
-        
+    
     override func viewDidLoad() {
         
         usernameField.addLeftIconToTableView(UIImage(named: "usericon"))
@@ -63,6 +65,17 @@ class SignupViewController: UIViewController {
         passwordField.validateOnEditingEnd(true)
         passwordField.validationHandler = validationHandler
         
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 43))
+        button.backgroundColor = UIColor(red:0.83, green:0.07, blue:0.07, alpha:1.00)
+        button.titleLabel?.font = UIFont(name: "OpenSans-Bold", size: 16)
+        button.setTitle("GO", forState: .Normal)
+        button.titleLabel?.textAlignment = .Center
+        button.titleLabel?.textColor = UIColor.whiteColor()
+        button.addTarget(self, action: #selector(initiateSignup), forControlEvents: .TouchUpInside)
+            
+        usernameField.inputAccessoryView = button
+        emailField.inputAccessoryView = button
+        passwordField.inputAccessoryView = button
     }
     
     // MARK: Form Handling

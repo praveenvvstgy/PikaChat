@@ -41,20 +41,20 @@ class Utils {
         return nil
     }
     
-    static func getUsernameString(name: String) -> NSAttributedString {
-        let iconAttributes = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Semibold", size: 10)!,
-            NSForegroundColorAttributeName: UIColor(red:0.93, green:0.08, blue:0.08, alpha:1.00)
-        ]
-        
-        let textAttributes = [
-            NSFontAttributeName: UIFont(name: "OpenSans-Semibold", size: 10)!,
-        ]
-        let usernameIcon = NSMutableAttributedString(string: " ● ", attributes: iconAttributes)
-        let usernameText = NSAttributedString(string: name, attributes: textAttributes)
-        usernameIcon.appendAttributedString(usernameText)
-        return usernameIcon
-    }
+//    static func getUsernameString(name: String) -> NSAttributedString {
+//        let iconAttributes = [
+//            NSFontAttributeName: UIFont(name: "OpenSans-Semibold", size: 10)!,
+//            NSForegroundColorAttributeName: UIColor(red:0.93, green:0.08, blue:0.08, alpha:1.00)
+//        ]
+//        
+//        let textAttributes = [
+//            NSFontAttributeName: UIFont(name: "OpenSans-Semibold", size: 10)!,
+//        ]
+//        let usernameIcon = NSMutableAttributedString(string: " ● ", attributes: iconAttributes)
+//        let usernameText = NSAttributedString(string: name, attributes: textAttributes)
+//        usernameIcon.appendAttributedString(usernameText)
+//        return usernameIcon
+//    }
     
     static func ifLoggedInRedirectToHome(fromVC: UIViewController) {
         if FIRAuth.auth()?.currentUser != nil {
@@ -62,8 +62,6 @@ class Utils {
             let homeNavigationViewController = storyboard.instantiateViewControllerWithIdentifier("homeNavigationViewController") as! BaseNavigationController
             let sideViewController = storyboard.instantiateViewControllerWithIdentifier("sideViewController") as! SideViewController
             let drawerController = MMDrawerController(centerViewController: homeNavigationViewController, leftDrawerViewController: sideViewController)
-            drawerController.openDrawerGestureModeMask = .All
-            drawerController.closeDrawerGestureModeMask = .All
             fromVC.presentViewController(drawerController, animated: true, completion: nil)
         }
     }
